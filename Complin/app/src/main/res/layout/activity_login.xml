@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/bgcolor"
+    android:padding="20dp"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:layout_width="285dp"
+        android:layout_height="131dp"
+        android:src="@drawable/logo"></ImageView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="20dp"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        ></TextView>
+
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:hint="Enter username"
+        android:layout_height="48dp"
+        android:background="@drawable/et_custom"
+        android:layout_marginTop="15dp"
+        ></EditText>
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:hint="@string/enter_message_password"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/et_custom"
+
+        ></EditText>
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="204dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/whitecolor"
+        android:background="@drawable/btn_custom"
+        android:text="@string/login_now"></Button>
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/not_register"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorAccent"
+        ></TextView>
+</LinearLayout>

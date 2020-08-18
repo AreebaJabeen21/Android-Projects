@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+
+
+    <Button
+        android:id="@+id/capture"
+        android:layout_width="266dp"
+        android:padding="20dp"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/whitecolor"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:background="@color/bgcolor"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_baseline_camera_alt_24"
+        android:text="Capture Image" />
+
+    <Button
+        android:id="@+id/mycomplain"
+        android:layout_width="266dp"
+        android:padding="20dp"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/whitecolor"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:background="@color/bgcolor"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_baseline_chat_bubble_24"
+        android:text="My Complains" />
+    <Button
+        android:layout_width="266dp"
+        android:padding="20dp"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/whitecolor"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:background="@color/bgcolor"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:text="Log Out" />
+</LinearLayout>
