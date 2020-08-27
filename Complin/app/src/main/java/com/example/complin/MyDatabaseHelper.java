@@ -37,7 +37,7 @@ Context context;
     public static final String TABLE_COMPLAIN = "complain";
     public static final String COLUMN_IMAGE = "image" ;
 
-    private static final String DATABASE_NAME = "users.db";
+    private static final String DATABASE_NAME = "ComplainApp.db";
     private static final int DATABASE_VERSION = 1;
 
     private ByteArrayOutputStream objectByteArrayOutputStream;
@@ -54,10 +54,7 @@ Context context;
             " text not null, " + COLUMN_MOBILE + " integer, " +
             COLUMN_PASSWORD + " text not null);";
 
-    private String COMPLIN_DATABASE_CREATE = "CREATE TABLE " +
-            TABLE_COMPLAIN + "(" + COLUMN_ID + " integer  primary key autoincrement, "+
-            COLUMN_CATEGORY +" text not null, " +COLUMN_SEVERITY +
-            "text not null, " +COLUMN_DESCRIPTION + "text not null," +COLUMN_IMAGE+ "image BLOB );";
+
 
     // Initialize the database object.
 
@@ -123,10 +120,12 @@ Context context;
     @Override
     public void onCreate(SQLiteDatabase database) {
         // Create the database with the database creation statement.
-
+        String sql="CREATE TABLE COMPLAIN (_id INTEGER PRIMARY KEY AUTOINCREMENT,CATEGORY TEXT,SEVERITY TEXT ,DESCRIPTION TEXT ,IMAGE BLOB)";
+        String COMPLAIN_TABLE = " CREATE TABLE IF NOT EXISTS " + TABLE_COMPLAIN + "(" + COLUMN_ID + " integer primary key autoincrement, "+ COLUMN_CATEGORY + " text not null, " + COLUMN_SEVERITY + " text not null, " + COLUMN_DESCRIPTION + " text not null, " + COLUMN_IMAGE + " imageBLOB );";
         try {
             database.execSQL(DATABASE_CREATE);
-            database.execSQL(COMPLIN_DATABASE_CREATE);
+            database.execSQL(COMPLAIN_TABLE);
+            database.execSQL(sql);
 
         } catch (Exception e) {
             Toast.makeText(context,e.getMessage(),Toast.LENGTH_SHORT).show();
@@ -183,10 +182,15 @@ public void storecomplain(ModelClass objectModelClass){
             objectContentValues.put("severity",objectModelClass.getSeverity());
             objectContentValues.put("image",imageByte);
 
-            long result = db.insert("complain",null,objectContentValues);
+            long result = db.insert(TABLE_COMPLAIN,null,objectContentValues);
+    if(result!=-1) {
+        Toast.makeText(context, "Your complain is added successfully" , Toast.LENGTH_SHORT).show();
+        db.close();
+    }
+    else{
+        Toast.makeText(context, "Faild to add complain" , Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(context,"Your complain is added successfully"+result,Toast.LENGTH_SHORT).show();
-                db.close();
+    }
 
 
 
@@ -198,7 +202,7 @@ public void storecomplain(ModelClass objectModelClass){
 }
 
 
-public ArrayList<ModelClass> getAllImges(){
+public ArrayList<ModelClass> getAllData(){
         try{
             SQLiteDatabase objectSqLiteDatabase = this.getReadableDatabase();
             ArrayList<ModelClass> objectModelClassList=new ArrayList<>();
@@ -206,17 +210,17 @@ public ArrayList<ModelClass> getAllImges(){
             Cursor objectCursor=objectSqLiteDatabase.rawQuery("select * from complain",null);
             if(objectCursor.getCount()!=0){
                 while (objectCursor.moveToNext()){
-                    String category=  objectCursor.getString(1);
-                    String severity=  objectCursor.getString(2);
-                    String description=  objectCursor.getString(3);
-                    byte[] imageBytes=objectCursor.getBlob(4);
+                    String category=  objectCursor.getString(0);
+                    String severity=  objectCursor.getString(1);
+                    String description=  objectCursor.getString(2);
+                    byte[] imageBytes=objectCursor.getBlob(3);
                     Bitmap  objectBitmap= BitmapFactory.decodeByteArray(imageBytes, 0 ,imageBytes.length);
                     objectModelClassList.add(new ModelClass(category,severity,description,objectBitmap));
                 }
                 return objectModelClassList;
             }
             else {
-                Toast.makeText(context,"NO vlues exist",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context,"NO values exist",Toast.LENGTH_SHORT).show();
                 return null;
 
             }

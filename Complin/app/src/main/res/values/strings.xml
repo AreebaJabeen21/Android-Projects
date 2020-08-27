@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Complin</string>
+    <string name="app_name">My complain</string>
     <string name="enter_message_name">Enter Your Name</string>
     <string name="enter_message_email">Enter Your Email</string>
     <string name="enter_message_mobile">Enter Your Mobile No</string>

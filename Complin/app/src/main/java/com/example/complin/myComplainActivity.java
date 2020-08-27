@@ -15,11 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class myComplainActivity extends AppCompatActivity {
-    MyDatabaseHelper myDatabaseHelper;
-    TextView cattext;
-Context context;
+    private MyDatabaseHelper myDatabaseHelper;
     private RecyclerView objectRecyclerView;
+
     private complainAdapter objectComplainAdpter;
+
+    Context context;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ Context context;
 
     public Void getData(View view){
         try {
-            objectComplainAdpter = new complainAdapter(myDatabaseHelper.getAllImges());
+            objectComplainAdpter = new complainAdapter(myDatabaseHelper.getAllData());
        objectRecyclerView.setHasFixedSize(true);
 
        objectRecyclerView.setLayoutManager(new LinearLayoutManager(this));

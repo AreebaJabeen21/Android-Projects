@@ -13,20 +13,20 @@ import java.util.ArrayList;
 
 public class complainAdapter extends RecyclerView.Adapter<complainAdapter.complainViewolder> {
 
-    ArrayList<ModelClass> objectModelClasList;
+    ArrayList<ModelClass> objectModelClassList;
     public complainAdapter(ArrayList<ModelClass>objectModelClasList){
-        this.objectModelClasList = objectModelClasList;
+        this.objectModelClassList = objectModelClasList;
     }
     @NonNull
     @Override
     public complainViewolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         return new complainViewolder(LayoutInflater.from(viewGroup.getContext()).
-                inflate(R.layout.activity_my_complain,viewGroup,false));
+                inflate(R.layout.activity_single_row,viewGroup,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull complainViewolder holder, int position) {
-        ModelClass objectModelClass = objectModelClasList.get(position);
+        ModelClass objectModelClass = objectModelClassList.get(position);
         complainViewolder.cattext.setText(objectModelClass.getCategory());
         complainViewolder.objectImgeView.setImageBitmap(objectModelClass.getImage());
     }
@@ -35,7 +35,7 @@ public class complainAdapter extends RecyclerView.Adapter<complainAdapter.compla
 
     @Override
     public int getItemCount() {
-        return objectModelClasList.size();
+        return objectModelClassList.size();
     }
 
     public static class complainViewolder extends RecyclerView.ViewHolder{
@@ -45,7 +45,8 @@ public class complainAdapter extends RecyclerView.Adapter<complainAdapter.compla
 
     public complainViewolder(@NonNull View itemView) {
         super(itemView);
-        objectImgeView=itemView.findViewById(R.id.show_img);
+        objectImgeView=itemView.findViewById(R.id.imgicon);
+        cattext=itemView.findViewById(R.id.title);
     }
 }
 }

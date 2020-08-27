@@ -49,7 +49,7 @@ public class Registration_Activity extends AppCompatActivity {
                 name=et_name.getText().toString();
                 mobile=et_mobile.getText().toString();
 
-                if (email.equals(null) && password.equals(null)&&name.equals(null)&&mobile.equals(null)) {
+                if (email.equals("") && password.equals("")&&name.equals("")&&mobile.equals("")) {
                     Toast.makeText(getApplicationContext(),"Please Insert Email and password",Toast.LENGTH_LONG).show();
                 } else {
                     boolean status = myDatabaseHelper.addUser(name,email,mobile,password);

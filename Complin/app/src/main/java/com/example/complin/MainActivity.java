@@ -29,7 +29,7 @@ Context context;
         btn_complain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,myComplainActivity.class);
+                Intent i = new Intent(MainActivity.this,single_row.class);
                 startActivity(i);
             }
         });

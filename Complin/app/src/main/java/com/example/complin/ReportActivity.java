@@ -29,7 +29,7 @@ Context context;
     Button report;
     private Uri imageFilePath;
     private Bitmap imageToStore;
-    MyDatabaseHelper myDatabaseHelper= new MyDatabaseHelper(this);
+    MyDatabaseHelper myDatabaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,7 @@ Context context;
         btn_capture = findViewById(R.id.capture);
         report=findViewById(R.id.report);
 
-
+        myDatabaseHelper= new MyDatabaseHelper(this);
         if(ContextCompat.checkSelfPermission(ReportActivity.this,
                 Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(ReportActivity.this,
